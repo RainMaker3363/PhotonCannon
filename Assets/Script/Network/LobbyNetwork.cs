@@ -13,6 +13,7 @@ public class LobbyNetwork : MonoBehaviour {
     private void OnConnectedToMaster()
     {
         print("Connected to Master.");
+        PhotonNetwork.automaticallySyncScene = false;
         PhotonNetwork.playerName = PlayerNetwork.instance.PlayerName;
 
         PhotonNetwork.JoinLobby(TypedLobby.Default);
@@ -21,6 +22,13 @@ public class LobbyNetwork : MonoBehaviour {
     private void OnJoinedLobby()
     {
         print("Join The Lobby.");
+
+        if(!PhotonNetwork.inRoom)
+        {
+            MainCanvasManager.Instance.LobbyCanvas.transform.SetAsLastSibling();
+        }
+
+        
     }
 	
 	// Update is called once per frame

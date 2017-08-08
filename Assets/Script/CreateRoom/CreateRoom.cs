@@ -18,6 +18,7 @@ public class CreateRoom : MonoBehaviour {
     public void OnClick_CreateRoom()
     {
         RoomOptions roomOption = new RoomOptions() { IsVisible = true, IsOpen = true, MaxPlayers = 4 };
+
         if(PhotonNetwork.CreateRoom(RoomName.text, roomOption, TypedLobby.Default))
         {
             print("Create room Successfully sent");
